@@ -1,0 +1,125 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default" namespace="/">
+        <action name="" class="action.IndexAction">
+            <result name="success">
+                index.jsp
+            </result>
+        </action>
+        <action name="home" class="action.IndexAction">
+            <result name="success">
+                index.jsp
+            </result>
+        </action>
+        <action name="detailProduct" class="action.DetailProductAction">
+            <result name="success">
+                product.jsp
+            </result>
+        </action>
+        
+        <action name="searchBySelect" class="action.SeachBySelectAction">
+            <result name="success">
+                search.jsp
+            </result>
+        </action>
+        <action name="addToCart" class="action.CartAction">
+            <result name="success" type="redirectAction">
+                viewCart
+            </result>
+            <result name="fail" type="redirectAction">
+                detailProduct
+            </result>
+        </action>
+        
+        <action name="viewCart" class="action.CartAction" method="viewCart">
+            <result name="success">
+                checkout.jsp
+            </result>
+            
+        </action>
+        <action name="deleteCart" class="action.CartAction" method="deleteCart">
+            <result name="success" type="redirectAction">
+                viewCart
+            </result>
+            <result name="fail" type="redirectAction">
+                viewCart
+            </result>
+            
+        </action>
+        
+        <action name="plus" class="action.CartAction" method="plus">
+            <result name="success" type="redirectAction">
+                viewCart
+            </result>
+            
+        </action>
+        
+           <action name="login">
+            <result>
+                login2.jsp
+            </result>
+            
+        </action>
+        
+            <action name="signup">
+            <result>
+                register.jsp
+            </result>
+            
+        </action>
+        <action name="minus" class="action.CartAction" method="minus">
+            <result name="success" type="redirectAction">
+                viewCart
+            </result>
+            <result name="fail" type="redirectAction">
+                viewCart
+            </result>
+            
+        </action>
+        
+        <action name="checkout" class="action.CartAction" method="checkout">
+            <result name="success" type="redirectAction">
+                home
+            </result>
+            <result name="fail" type="redirectAction">
+                viewCart
+            </result>
+        </action>
+        
+           <action name="registerUser" class="action.UserAction">
+            <result name="success" type="redirectAction">
+                home
+            </result>
+             <result name="input">
+                register.jsp
+            </result>
+              <result name="fail">
+                register.jsp
+            </result>
+        </action>
+        
+            <action name="loginUser" class="action.LoginAction">
+            <result name="success" type="redirectAction">
+                home
+            </result>
+             <result name="input">
+                login2.jsp
+            </result>
+              <result name="fail">
+                login2.jsp
+            </result>
+        </action>
+        
+           <action name="logout" class="action.LoginAction" method="logout">
+            <result name="success" type="redirectAction">
+                home
+            </result>
+          
+        </action>
+   
+    </package>
+</struts>
